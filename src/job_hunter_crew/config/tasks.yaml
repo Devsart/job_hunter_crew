@@ -1,0 +1,26 @@
+research_task:
+  description: >
+    Conduct a search for job opportunities based on the provided query.
+    Use the Google search tool to find job posts that match the query: {query}.
+    Focus on finding the most relevant {n} job posts that are compatible with the resume
+    matching the query for the given source.
+  expected_output: >
+    A list with {n} job posts that have the best match with the given resume source.
+  agent: job_opportunities_scrapper
+
+reporting_task:
+  description: >
+    Review the context you got and expand each opportunity retrieved with informations about the company's reputation.
+    Use sites like Glassdoor, Indeed, and LinkedIn to gather data on the company's reputation
+    for each opportunity in the list retrieved by the researcher. Exclude opportunities that looks like scam.
+    Return a detailed report with the following information for the best {n} opportunities:
+    - Company name
+    - Company reputation (from 1 to 5)
+    - Average salary for the position (if available)
+    - Opportunity link
+    - Job title
+    Ensure that the report is comprehensive and provides a clear overview of the job opportunities.
+
+  expected_output: >
+    A report containing the best {n} job opportunities with detailed information about each company.
+  agent: business_analyst
