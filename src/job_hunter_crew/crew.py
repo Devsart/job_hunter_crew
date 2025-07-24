@@ -6,7 +6,7 @@ from typing import List
 from crewai.knowledge.source.pdf_knowledge_source import PDFKnowledgeSource
 
 pdf_source = PDFKnowledgeSource(
-    file_paths=["assets/resume.pdf"]
+    file_paths=["resume.pdf"]
 )
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
@@ -26,7 +26,7 @@ class JobHunterCrew():
     # If you would like to add tools to your agents, you can learn more about it here:
     # https://docs.crewai.com/concepts/agents#agent-tools
     @agent
-    def researcher(self) -> Agent:
+    def job_opportunities_scrapper(self) -> Agent:
         return Agent(
             config=self.agents_config['job_opportunities_scrapper'], # type: ignore[index]
             verbose=True,
@@ -34,7 +34,7 @@ class JobHunterCrew():
         )
 
     @agent
-    def reporting_analyst(self) -> Agent:
+    def business_analyst(self) -> Agent:
         return Agent(
             config=self.agents_config['business_analyst'], # type: ignore[index]
             verbose=True,
@@ -66,6 +66,10 @@ class JobHunterCrew():
         return Crew(
             agents=self.agents, # Automatically created by the @agent decorator
             tasks=self.tasks, # Automatically created by the @task decorator
+            embedder={
+                "provider": "google",
+                "config": {"model": "text-embedding-004"}
+            },
             process=Process.sequential,
             verbose=True,
             knowledge_sources=[pdf_source],

@@ -1,19 +1,23 @@
 research_task:
   description: >
     Conduct a search for job opportunities based on the provided query.
+    You can adapt the query to be more specific based on the resume sended as source.
     Use the Google search tool to find job posts that match the query: {query}.
-    Focus on finding the most relevant {n} job posts that are compatible with the resume
-    matching the query for the given source.
+    Focus on finding the most relevant job posts that are compatible with the resume.
+    You can discard opportunities that specifies that they are looking for a legal worker in the US or Canada.
+    You can priorize opportunities that specifies that they are looking for a remote worker and is LATAM open.
+    You can also discard opportunities that are not compatible with the candidate's experience or that were published a long time ago.
+    Return a list of job posts that have the best match with the given resume source with a salary range between 0 to $100k or undefined.
   expected_output: >
-    A list with {n} job posts that have the best match with the given resume source.
+    A list with job posts that have the best match with the given resume source.
   agent: job_opportunities_scrapper
 
 reporting_task:
   description: >
     Review the context you got and expand each opportunity retrieved with informations about the company's reputation.
     Use sites like Glassdoor, Indeed, and LinkedIn to gather data on the company's reputation
-    for each opportunity in the list retrieved by the researcher. Exclude opportunities that looks like scam.
-    Return a detailed report with the following information for the best {n} opportunities:
+    for each opportunity in the list retrieved by the job_opportunities_scrapper. Exclude opportunities that looks like scam.
+    Return a detailed report with the following information for the best 10 opportunities:
     - Company name
     - Company reputation (from 1 to 5)
     - Average salary for the position (if available)
@@ -22,5 +26,5 @@ reporting_task:
     Ensure that the report is comprehensive and provides a clear overview of the job opportunities.
 
   expected_output: >
-    A report containing the best {n} job opportunities with detailed information about each company.
+    A report containing a ranked list of the best job opportunities with detailed information about each company. and the job opportunities Links provided by the job_opportunities_scrapper.
   agent: business_analyst
