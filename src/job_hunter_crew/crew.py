@@ -73,4 +73,5 @@ class JobHunterCrew():
             process=Process.sequential,
             verbose=True,
             knowledge_sources=[pdf_source],
+            memory=True
         )

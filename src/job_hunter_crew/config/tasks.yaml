@@ -2,12 +2,15 @@ research_task:
   description: >
     Conduct a search for job opportunities based on the provided query.
     You can adapt the query to be more specific based on the resume sended as source.
-    Use the Google search tool to find job posts that match the query: {query}.
+    This is my first english speaking work, so I want to find opportunities that are compatible with my experience and that are not looking for a legal worker in the US or Canada.
+    Use this query: {query} as a base for the search.
+    You can also prioritize opportunities that specify they are looking for a remote worker or are LATAM
+    Use the Google search tool to find job posts that are a good fit with the given resume.
     Focus on finding the most relevant job posts that are compatible with the resume.
-    You can discard opportunities that specifies that they are looking for a legal worker in the US or Canada.
-    You can priorize opportunities that specifies that they are looking for a remote worker and is LATAM open.
     You can also discard opportunities that are not compatible with the candidate's experience or that were published a long time ago.
     Return a list of job posts that have the best match with the given resume source with a salary range between 0 to $100k or undefined.
+    You can search multiple times and change the query to get better results. Max of 5 searches.
+    The final output must have at least 30 job posts
   expected_output: >
     A list with job posts that have the best match with the given resume source.
   agent: job_opportunities_scrapper
