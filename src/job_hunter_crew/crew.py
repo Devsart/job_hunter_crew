@@ -4,6 +4,9 @@ from crewai_tools import SerperDevTool
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
 from crewai.knowledge.source.pdf_knowledge_source import PDFKnowledgeSource
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 pdf_source = PDFKnowledgeSource(
     file_paths=["resume.pdf"]
@@ -68,7 +71,10 @@ class JobHunterCrew():
             tasks=self.tasks, # Automatically created by the @task decorator
             embedder={
                 "provider": "google",
-                "config": {"model": "text-embedding-004"}
+                "config": {
+                            "model": "text-embedding-004",
+                            "api_key": os.getenv("GOOGLE_API_KEY") 
+                          }
             },
             process=Process.sequential,
             verbose=True,

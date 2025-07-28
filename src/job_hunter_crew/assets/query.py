@@ -1,7 +1,7 @@
 import os
 from datetime import datetime, timedelta
 
-job_roles = ["AI Engineer", "Data Scientist", "Machine Learning Engineer"]
+job_roles = ["AI Engineer", "Data Scientist", "Machine Learning Engineer", "ML Engineer"]
 sites_to_search = ["jobs.google.com", "linkedin.com/jobs", "weworkremotely.com", "remotive.io", "angel.co"]
 today_date = datetime.now().strftime("%Y-%m-%d")
 days_to_search = 1

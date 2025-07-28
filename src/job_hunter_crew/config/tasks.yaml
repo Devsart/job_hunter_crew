@@ -10,7 +10,7 @@ research_task:
     You can also discard opportunities that are not compatible with the candidate's experience or that were published a long time ago.
     Return a list of job posts that have the best match with the given resume source with a salary range between 0 to $100k or undefined.
     You can search multiple times and change the query to get better results. Max of 5 searches.
-    The final output must have at least 30 job posts
+    MAKE SURE that the job posts are recent, after yesterday. Today is {today_date}.
   expected_output: >
     A list with job posts that have the best match with the given resume source.
   agent: job_opportunities_scrapper

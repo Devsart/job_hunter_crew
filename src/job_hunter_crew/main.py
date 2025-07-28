@@ -18,6 +18,7 @@ def run():
     Run the crew.
     """
     inputs = {
+        'today_date': datetime.now().strftime("%Y-%m-%d"),
         'query': job_opportunities_query,
         'n': '30'
     }
